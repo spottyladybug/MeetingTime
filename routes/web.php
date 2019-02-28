@@ -22,6 +22,16 @@ Route::get('/logout', function(){
     return view('welcome');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('meeting', 'MeetingController');
+    Route::resource('business', 'BusinessHourController');
+    Route::resource('manager', 'ManagerController');
+    //генерация ссылки на час
+    Route::get('/generateUrl/{manager}', function($manager){
+        return response(URL::temporarySignedRoute('showBusinessHours', now()->addHour(), $manager));
+    });
+});
+
 //свободное время
 Route::any('/showBusinessHours/{manager}', 'ManagerController@showBusinessHours')
     ->name('showBusinessHours')

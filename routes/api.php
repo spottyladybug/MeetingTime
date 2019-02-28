@@ -17,12 +17,4 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::resource('meeting', 'MeetingController');
-    Route::resource('business', 'BusinessHourController');
-    Route::resource('manager', 'ManagerController');
-    //генерация ссылки на час
-    Route::get('/generateUrl/{manager}', function($manager){
-        return response(URL::temporarySignedRoute('showBusinessHours', now()->addHour(), $manager));
-    });
-});
+
