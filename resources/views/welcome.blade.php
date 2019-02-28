@@ -96,4 +96,26 @@
             </div>
         </div>
     </body>
+    <!-- receive notifications -->
+    <script src="{{ asset('js/echo.js') }}"></script>
+
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+    <script>
+        Pusher.logToConsole = true;
+
+        window.Echo = new Echo({
+            broadcaster: 'pusher',
+            key: 'B854F3620D44C3611FD8055BBAF9C53CE5D101C4E7B09F658DF4E01186FA187E',
+            cluster: 'ap2',
+            encrypted: true,
+            logToConsole: true
+        });
+
+        Echo.private('user.{{ $user_id }}')
+            .listen('NewMessageNotification', (e) => {
+                alert(e.message.message);
+            });
+    </script>
+    <!-- receive notifications -->
 </html>

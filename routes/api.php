@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('meeting', 'MeetingController');
+    Route::resource('business', 'BusinessHourController');
+    Route::resource('manager', 'ManagerController');
+    //генерация ссылки на час
+    Route::get('/generateUrl/{manager}', function($manager){
+        return response(URL::temporarySignedRoute('showBusinessHours', now()->addHour(), $manager));
+    });
 });

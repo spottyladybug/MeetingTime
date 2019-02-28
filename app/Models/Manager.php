@@ -34,7 +34,7 @@ class Manager extends Model
 
     public function meetings()
     {
-        return $this->hasMany(Meeting::class);
+        return $this->hasMany(Meeting::class)->with('candidate');
     }
 
     public function candidates()
