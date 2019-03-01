@@ -76,7 +76,7 @@ class BusinessHourController extends Controller
      */
     public function show(BusinessHour $businessHour)
     {
-        //
+        return response()->json($businessHour);// зачем вообще надо?)
     }
 
     /**
@@ -110,6 +110,11 @@ class BusinessHourController extends Controller
      */
     public function destroy(BusinessHour $businessHour)
     {
-        //
+        try {
+            $businessHour->delete();
+        } catch (\Exception $exception) {
+            return response(['success' => false, 'error' => $exception->getMessage()]);
+        }
+        return response()->json(true);
     }
 }
