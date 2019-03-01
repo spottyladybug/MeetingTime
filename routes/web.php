@@ -21,7 +21,7 @@ Route::get('/logout', function(){
     Auth::logout();
     return view('welcome');
 });
-
+//убрать отсюда
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('meeting', 'MeetingController');
     Route::resource('business', 'BusinessHourController');
