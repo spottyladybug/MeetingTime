@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="e77c865e-a855-41a8-bdf7-16db5bcfb073" name="vagrant" url="http://3rdSept.test">
-        <fileTransfer host="192.168.10.10" port="22" rootFolder="/home/vagrant/3rdSept" accessType="SFTP">
+        <fileTransfer host="192.168.10.10" port="22" rootFolder="/home/vagrant/MeetingTime" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
